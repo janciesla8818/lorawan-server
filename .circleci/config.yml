@@ -1,0 +1,16 @@
+verstion: 2
+jobs: 
+    docker:
+        - image fpesti/lorawan-server-primary:22.3.1
+    steps:
+        - checkout 
+        - run:
+            name: Building LoraWAN Server
+            command: | 
+                make
+                make release
+        - run:
+            name: Execute unit tests
+            command: make test
+        
+                
